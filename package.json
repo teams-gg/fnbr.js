@@ -1,5 +1,5 @@
 {
-  "name": "fnbr",
+  "name": "@teams-dot-gg/teamsgg-fnbr-fork",
   "version": "3.1.3",
   "description": "A library to interact with Epic Games' Fortnite HTTP and XMPP services",
   "main": "dist/index.js",

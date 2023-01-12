@@ -71,7 +71,8 @@ class Stats extends Base {
         const statKey = fields.shift()!;
 
         if (statKey !== 'collection') {
-          const inputType = fields.shift() as 'keyboardmouse' | 'gamepad' | 'touch';
+          const inputType = this.getInputType(fields);
+          fields.shift();
           fields.shift();
           const playlistId = fields.join('_');
 
@@ -149,6 +150,24 @@ class Stats extends Base {
     if (playlist.includes('squad')) return 'squad';
 
     return 'other';
+  }
+
+  /**
+   * Returns the inputType from the list of fields
+   * @param fields
+   */
+  private getInputType(fields: string[]): undefined | 'keyboardmouse' | 'gamepad' | 'touch' {
+    if (fields.filter(field => field === 'keyboardmouse').length > 0) {
+      return 'keyboardmouse'
+    }
+    if (fields.filter(field => field === 'gamepad').length > 0) {
+      return 'gamepad'
+    }
+    if (fields.filter(field => field === 'touch').length > 0) {
+      return 'touch'
+    }
+
+    return undefined;
   }
 }
 
